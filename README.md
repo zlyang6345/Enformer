@@ -96,8 +96,8 @@ SEQ_LENGTH = 393_216
 # stacked to form a batch.
 inputs = tf.zeros((1, SEQ_LENGTH, 4), dtype=tf.float32)
 predictions = enformer.predict_on_batch(inputs)
-predictions['human'].shape  # [batch_size, 896, 5313]
-predictions[mouse].shape  # [batch_size, 896, 1643]
+predictions['human'].shape  # [batch_size, 896 (bin), 5313 (human tracks)]
+predictions[mouse].shape  # [batch_size, 896 (bin), 1643 (mouse tracks)]
 ```
 
 ## Outputs
