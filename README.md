@@ -87,7 +87,7 @@ by the Enformer model. The rest will be cropped within the model.
 import tensorflow as tf
 import tensorflow_hub as hub
 
-enformer = hub.Module('https://tfhub.dev/deepmind/enformer/1')
+enformer = hub.load('https://tfhub.dev/deepmind/enformer/1').model
 
 SEQ_LENGTH = 393_216
 
@@ -97,7 +97,7 @@ SEQ_LENGTH = 393_216
 inputs = tf.zeros((1, SEQ_LENGTH, 4), dtype=tf.float32)
 predictions = enformer.predict_on_batch(inputs)
 predictions['human'].shape  # [batch_size, 896 (bin), 5313 (human tracks)]
-predictions[mouse].shape  # [batch_size, 896 (bin), 1643 (mouse tracks)]
+predictions['mouse'].shape  # [batch_size, 896 (bin), 1643 (mouse tracks)]
 ```
 
 ## Outputs
